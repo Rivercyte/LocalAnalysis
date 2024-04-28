@@ -40,10 +40,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install setuptools wheel twine
-        bash install.sh
     - name: Rebranding
       shell: bash
       run: bash rebrand.sh
+    - name: Install project
+      shell: bash
+      run: bash install.sh
     - name: Build windows executable
       if: runner.os == 'windows'
       working-directory: ./project/build-recipes
