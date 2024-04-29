@@ -8,5 +8,5 @@ data.
 
 Installation
 ------------
-Installers for Windows and macOS are available at the
+Installers for Windows are available at the
 `release page <https://github.com/Rivercyte/RCLocalAnalysis/releases>`__.

@@ -59,7 +59,7 @@ jobs:
     - name: Release Assets
       uses: softprops/action-gh-release@v1
       with:
-        name: ShapeOut ${{ env.RELEASE_VERSION }}
+        name: RC Local Analysis ${{ env.RELEASE_VERSION }}
         draft: true
         prerelease: false
         body: |
