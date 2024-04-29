@@ -2,8 +2,11 @@
 set -e
 set -x
 
-# install package
-python3 -m pip install ./project
 
 # override version
-python3 write_version.py $RELEASE_VERSION ./project/rclocalanalysis/_version.py
+cd project
+git tag -a $RELEASE_VERSION -m "RC Local Analysis deploy"
+cd ..
+
+# install package
+python3 -m pip install ./project
