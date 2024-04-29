@@ -6,9 +6,6 @@ set -x
 # Clone the original repository
 git clone --depth 1 https://github.com/ZELLMECHANIK-DRESDEN/ShapeOut2.git project
 
-# remove any trace of git
-rm -rf project/.git
-
 # replace occurrences of Shape-Out in code
 find './project' -name '?*.*' -exec sed -i 's/ZELLMECHANIK-DRESDEN/Rivercyte/g' {} +
 find './project' -name '?*.*' -exec sed -i 's/Zellmechanik-Dresden/Rivercyte/g' {} +
