@@ -3,7 +3,7 @@ set -e
 set -x
 
 # install package
-python -m pip install ./project
+python3 -m pip install ./project
 
 # override version
-python write_version $RELEASE_VERSION ./project/rclocalanalysis/_version.py
+python3 write_version.py $RELEASE_VERSION ./project/rclocalanalysis/_version.py
