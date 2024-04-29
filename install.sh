@@ -3,13 +3,10 @@ set -e
 set -x
 
 
-# override version from git tags
-cd project
-git config user.email "ci@example.com"
-git config user.name "Continuous Integration"
-git commit -a -m "RC Local Analysis release"
-git tag -a $RELEASE_VERSION -m "RC Local Analysis release"
-cd ..
+# override version
+python write_version.py $RELEASE_VERSION ./project/rclocalanalysis/_version.py
+sed -i "s/dynamic = \[\x22version\x22\]/version=\x22${RELEASE_VERSION}\x22/" ./project/pyproject.toml
+sed -i "s/\[build-system\]/\[no-build-system]/" ./project/pyproject.toml
 
 # install package
 python3 -m pip install ./project
