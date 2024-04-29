@@ -3,8 +3,6 @@
 set -e
 set -x
 
-apt install rename
-
 # Clone the original repository
 git clone --depth 1 https://github.com/ZELLMECHANIK-DRESDEN/ShapeOut2.git project
 
@@ -20,16 +18,13 @@ find './project' -name '?*.*' -exec sed -i 's/ShapeOut/RCLocalAnalysis/g' {} +
 find './project' -name '?*.*' -exec sed -i 's/shapeout2/rclocalanalysis/g' {} +
 find './project' -name '?*.*' -exec sed -i 's/shapeout/rclocalanalysis/g' {} +
 
-mv project/shapeout2 project/rclocalanalysis
-
-# replace occurrences of Shape-Out in directory names
-rename -d 's/Shape-Out2/RC-Local-Analysis/' ./project/**
-rename -d 's/Shape-Out/RC-Local-Analysis/' ./project/**
-rename -d 's/ShapeOut2/RCLocalAnalysis/' ./project/**
-rename -d 's/ShapeOut/RCLocalAnalysis/' ./project/**
-rename -d 's/shapeout2/rclocalanalysis/' ./project/**
-rename -d 's/shapeout/rclocalanalysis/' ./project/**
-
+# replace occurrences of Shape-Out in directory and file names
+python3 rename_path.py 's/Shape-Out2/RC-Local-Analysis/g' ./project
+python3 rename_path.py 's/Shape-Out/RC-Local-Analysis/g' ./project
+python3 rename_path.py 's/ShapeOut2/RCLocalAnalysis/g' ./project
+python3 rename_path.py 's/ShapeOut/RCLocalAnalysis/g' ./project
+python3 rename_path.py 's/shapeout2/rclocalanalysis/g' ./project
+python3 rename_path.py 's/shapeout/rclocalanalysis/g' ./project
 
 # replace icons
 cp artwork/icon/rclocalanalysis_icon_64.png project/rclocalanalysis/img/icon.png
